@@ -151,13 +151,13 @@
           </div>
         </div>
 
-        <!-- 補助リンクライン（GitHub Releases 画面への直リンク） -->
+        <!-- 補助リンクライン（GitHub main画面への直リンク） -->
         <div class="mt-4 pt-3 border-t border-slate-700/80 flex flex-wrap items-center justify-between text-[11px] font-mono text-slate-400 gap-2">
           <span>v1.0.0 正式版 / 約 4.5 MB</span>
-          <a href="https://github.com/k-a-AML/frame-analysis-app/releases/tag/v1.0.0" 
+          <a href="https://github.com/k-a-AML/frame-analysis-app" 
              target="_blank" rel="noopener noreferrer"
              class="text-sky-300 hover:text-sky-200 underline decoration-sky-500/50 flex items-center gap-1 font-sans">
-            <span>GitHub Releases でリリースノートと全ファイルを確認する</span>
+            <span>GitHub でmanualやReadmeなど全ファイルを確認する</span>
             <span>↗</span>
           </a>
         </div>
@@ -797,59 +797,6 @@
 
   </div>
 </footer>
-
-  <!-- FormSubmit AJAX非同期送信スクリプト（画面遷移・リダイレクト防止） -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const regForm = document.getElementById('academicRegForm');
-      const regBtn = document.getElementById('regSubmitBtn');
-      const successCard = document.getElementById('regSuccessCard');
-
-      if (regForm) {
-        regForm.addEventListener('submit', async (e) => {
-          e.preventDefault(); // ブラウザ標準の画面遷移（リダイレクト）を遮断
-
-          regBtn.disabled = true;
-          const originalBtnText = regBtn.textContent;
-          regBtn.textContent = '申請を送信中...';
-
-          const formData = new FormData(regForm);
-
-          // 送信先URLの取得（二重防御）
-          let targetUrl = regForm.action;
-          if (targetUrl.includes('formsubmit.co/') && !targetUrl.includes('formsubmit.co/ajax/')) {
-            targetUrl = targetUrl.replace('formsubmit.co/', 'formsubmit.co/ajax/');
-          }
-
-          try {
-            const response = await fetch(targetUrl, {
-              method: 'POST',
-              body: formData,
-              headers: {
-                'Accept': 'application/json' // FormSubmit に JSON レスポンスを要求
-              }
-            });
-
-            if (response.ok) {
-              regForm.classList.add('hidden');
-              successCard.classList.remove('hidden');
-            } else {
-              const resData = await response.json().catch(() => ({}));
-              console.error('Submission failed:', resData);
-              alert('送信に失敗しました。時間をおいて再度お試しください。');
-              regBtn.disabled = false;
-              regBtn.textContent = originalBtnText;
-            }
-          } catch (err) {
-            console.error('Submit Error:', err);
-            alert('通信エラーが発生しました。インターネット接続をご確認のうえ、再度送信してください。');
-            regBtn.disabled = false;
-            regBtn.textContent = originalBtnText;
-          }
-        });
-      }
-    });
-  </script>
 
 </body>
 </html>
