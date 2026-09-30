@@ -1,1 +1,855 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2次元フレーム簡易解析（3D可視化拡張版）| 大学構造力学 講義・演習作図支援ツール【教員限定配布】</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Shippori Mincho (明朝体), Noto Sans JP, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Shippori Mincho"', '"Source Serif 4"', 'serif'],
+            sans: ['"Noto Sans JP"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            academic: {
+              ink: '#0f172a',
+              paper: '#fcfbf9',
+              primary: '#1e3a5f', // アカデミックネイビー
+              subtle: '#f1f5f9',
+              border: '#cbd5e1',
+              accent: '#8b2635', // 学術ボルドー
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #fbfbfd;
+      color: #1e293b;
+      line-height: 1.85;
+      letter-spacing: 0.015em;
+    }
+    .academic-grid {
+      background-size: 36px 36px;
+      background-image: 
+        linear-gradient(to right, rgba(226, 232, 240, 0.65) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(226, 232, 240, 0.65) 1px, transparent 1px);
+    }
+    .section-num {
+      font-family: 'JetBrains Mono', monospace;
+      color: #1e3a5f;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased selection:bg-slate-200 selection:text-academic-primary">
+
+  <!-- 学術機関ヘッダー -->
+  <header class="border-b border-academic-border bg-white sticky top-0 z-40 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <span class="inline-block px-2.5 py-0.5 border border-slate-700 text-slate-800 text-[11px] font-mono font-bold rounded-sm bg-slate-50">
+          Faculty Only / Win64
+        </span>
+        <div class="border-l border-slate-300 pl-3">
+          <span class="text-xs text-slate-500 block leading-tight font-serif font-bold">近畿大学建築学部建築数理研究室</span>
+          <span class="text-sm font-bold text-slate-900 tracking-tight">2次元フレーム簡易解析（3D可視化版）</span>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex items-center space-x-6 text-xs text-slate-600 font-medium">
+        <a href="#features" class="hover:text-academic-primary transition-colors">ツールの特長・優位性</a>
+        <a href="#workspace" class="hover:text-academic-primary transition-colors">画面構成</a>
+        <a href="#stress-3d" class="hover:text-academic-primary transition-colors">3D応力可視化</a>
+        <a href="#diagram-flow" class="hover:text-academic-primary transition-colors">作図自動展開</a>
+        <a href="#specifications" class="hover:text-academic-primary transition-colors">解析理論・仕様</a>
+        <a href="#policy" class="hover:text-academic-accent transition-colors font-bold">教員限定配布の理由</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+              
+        <!-- ヘッダー：直ダウンロードボタン -->
+        <a href="https://github.com/k-a-AML/frame-analysis-app/releases/download/v1.0.0/fem-analysis-tool_1.0.0_x64_en-US.msi" 
+           class="inline-flex items-center gap-1.5 px-3 py-1.5 border border-slate-300 hover:border-slate-400 bg-slate-50 hover:bg-slate-100 text-slate-800 text-xs font-mono font-semibold rounded transition-colors shadow-2xs">
+          <svg class="w-3.5 h-3.5 fill-current text-academic-primary" viewBox="0 0 20 20">
+            <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/>
+          </svg>
+          DL (.msi)
+        </a>
+        <a href="#register" class="inline-flex items-center justify-center px-3.5 py-1.5 border border-academic-primary bg-academic-primary text-white hover:bg-[#152a45] text-xs font-medium rounded transition-colors duration-150 shadow-sm">
+          ライセンス申請
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- タイトル＆要旨（Abstract）セクション -->
+  <section class="border-b border-academic-border bg-white academic-grid py-12 sm:py-14">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      
+      <div class="mb-4">
+        <div class="inline-flex items-center gap-2 mb-2 flex-wrap">
+          <span class="px-2 py-0.5 bg-rose-50 border border-rose-200 text-rose-800 text-[11px] font-bold rounded font-mono">
+            ※ 大学・高専 講義担当教員限定
+          </span>
+          <span class="px-2 py-0.5 bg-slate-100 border border-slate-200 text-slate-700 text-[11px] font-mono">
+            完全オフライン動作（外部通信なし）
+          </span>
+          <span class="px-2 py-0.5 bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-mono font-bold">
+            v1.0.0 正式公開中
+          </span>
+        </div>
+        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-slate-900 mt-1 leading-tight">
+          2次元フレーム簡易解析 Windowsデスクトップアプリケーション
+        </h1>
+        <p class="text-sm font-serif text-slate-600 mt-2">
+          大学・高専の構造力学講義における教員の問題作成・学生の理解度向上を補助する教育専用ツール
+        </p>
+      </div>
+
+      <!-- インストーラー ＆ マニュアル ダウンロードカード -->
+      <div class="mt-6 p-5 bg-gradient-to-r from-slate-900 via-[#152a45] to-[#1e3a5f] rounded-lg text-white shadow-md border border-slate-700">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="px-2 py-0.5 bg-emerald-500 text-slate-950 text-[10px] font-mono font-bold rounded">FREE DOWNLOAD</span>
+              <span class="text-xs font-mono text-slate-300">Windows 10 / 11 (64bit)</span>
+            </div>
+            <h3 class="text-base sm:text-lg font-serif font-bold text-white tracking-tight">
+              Windows版 アプリ本体 ＆ 操作マニュアル
+            </h3>
+            <p class="text-xs text-slate-300 font-serif mt-1 leading-relaxed max-w-xl">
+              インストーラー初回起動時に画面に表示される<strong>「マシン識別コード（16桁）」</strong>を添えて下記フォームより申請いただければ、個別ライセンスファイル（.lic）を速やかに発行いたします。
+            </p>
+          </div>
+          
+          <!-- ダウンロードアクションボタン群（アプリ本体 + 同階層 manual.pdf 直接閲覧） -->
+          <div class="shrink-0 flex flex-col sm:flex-row lg:flex-col gap-2.5">
+            <!-- アプリ本体直DLボタン -->
+            <a href="https://github.com/k-a-AML/frame-analysis-app/releases/download/v1.0.0/fem-analysis-tool_1.0.0_x64_en-US.msi" 
+               class="inline-flex items-center justify-center gap-2 px-5 py-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-sans font-bold text-xs rounded shadow-lg transition-transform transform active:scale-95">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/>
+              </svg>
+              Windows版をダウンロード (.msi)
+            </a>
+ 
+          </div>
+        </div>
+
+        <!-- 補助リンクライン（GitHub Releases 画面への直リンク） -->
+        <div class="mt-4 pt-3 border-t border-slate-700/80 flex flex-wrap items-center justify-between text-[11px] font-mono text-slate-400 gap-2">
+          <span>v1.0.0 正式版 / 約 4.5 MB</span>
+          <a href="https://github.com/k-a-AML/frame-analysis-app/releases/tag/v1.0.0" 
+             target="_blank" rel="noopener noreferrer"
+             class="text-sky-300 hover:text-sky-200 underline decoration-sky-500/50 flex items-center gap-1 font-sans">
+            <span>GitHub Releases でリリースノートと全ファイルを確認する</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 論文 Abstract 形式の要約枠 -->
+      <div class="mt-8 bg-white border border-slate-300 rounded p-6 sm:p-7 shadow-[0_1px_3px_rgba(0,0,0,0.03)]">
+        <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-200">
+          <span class="text-xs font-mono font-bold uppercase tracking-widest text-academic-primary">要旨 (Abstract)</span>
+          <span class="text-xs text-slate-500 font-mono">Windows 10 / 11 (64bit) / 無料提供（要個別認証）</span>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed text-justify font-serif">
+          本ソフトウェアは、大学・高等専門学校の建築学における「構造力学」「構造解析学」の講義・演習を担当される教員を支援するために開発された教育専用デスクトップツールです。学生が手計算（たわみ角法や固定法）で学ぶ剛比・剛度ベースの理論値と整合するUIや解析エンジンを備え、2次元の直感的なモデリングから、3次元空間で線材の垂直応力度コンター（引張・圧縮の明瞭な分離）、さらには定期試験・講義資料作成用のベクトル図面（SVG/PNG）を即座に生成します。インターネット接続を一切必要としない完全ローカル環境で動作し、講義室での即応的な実演や機密性の高い試験問題作成にも安心してご活用いただけます。
+        </p>
+        
+        <div class="mt-4 pt-3 border-t border-slate-200 flex flex-wrap gap-2 text-[11px] font-mono text-slate-600">
+          <span class="bg-slate-100 px-2 py-0.5 rounded border border-slate-200">直接剛性法（変位法）</span>
+          <span class="bg-slate-100 px-2 py-0.5 rounded border border-slate-200">剛度 K 入力対応</span>
+          <span class="bg-slate-100 px-2 py-0.5 rounded border border-slate-200">3Dの応力度可視化</span>
+          <span class="bg-slate-100 px-2 py-0.5 rounded border border-slate-200">演習問題ベクター作図</span>
+          <span class="bg-slate-100 px-2 py-0.5 rounded border border-slate-200">完全ローカル実行</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 直感的操作性と汎用FEM・他ツールに対する優位性 -->
+  <section id="features" class="py-14 border-b border-academic-border bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      
+      <div class="flex items-baseline space-x-3 mb-6">
+        <span class="section-num text-xl">NEW</span>
+        <div>
+          <h2 class="text-lg sm:text-xl font-bold font-serif text-slate-900">直感的操作性と汎用FEM・既存ツールに対する優位性</h2>
+          <p class="text-xs text-slate-500 font-serif">教育現場に特化することで実現した「思考を妨げない軽快さ」と「教科書理論との一致」</p>
+        </div>
+      </div>
+
+      <!-- 比較テーブル -->
+      <div class="bg-white border border-slate-300 rounded overflow-hidden shadow-sm mb-8">
+        <div class="bg-slate-100 px-4 py-2.5 border-b border-slate-300 flex justify-between items-center">
+          <span class="text-xs font-mono font-bold text-slate-800">表1 構造力学教育における主要解析手法・ツールの比較</span>
+          <span class="text-[11px] font-serif text-slate-500">※ 講義・演習および作図用途での評価</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-xs text-left border-collapse font-serif">
+            <thead>
+              <tr class="bg-slate-50 border-b border-slate-200 text-slate-700 font-bold">
+                <th class="py-3 px-4 w-1/4">比較項目</th>
+                <th class="py-3 px-4 w-1/4 bg-blue-50/60 text-academic-primary border-l border-r border-blue-200 font-sans">
+                  本システム（2次元フレーム簡易解析）
+                </th>
+                <th class="py-3 px-4 w-1/4">商用汎用FEM解析ソフト</th>
+                <th class="py-3 px-4 w-1/4">表計算・手計算用自作シート</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200 text-slate-600">
+              <tr>
+                <td class="py-3 px-4 font-bold text-slate-800 bg-slate-50/50">モデリング所要時間</td>
+                <td class="py-3 px-4 bg-blue-50/30 text-academic-primary font-bold border-l border-r border-blue-200">
+                  〜数分（グリッド直感クリック）
+                </td>
+                <td class="py-3 px-4">数分〜（入力項目が多い）</td>
+                <td class="py-3 px-4">骨組が変わるたび方程式の組み直しが必要</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 font-bold text-slate-800 bg-slate-50/50">手計算理論との一致性</td>
+                <td class="py-3 px-4 bg-blue-50/30 text-academic-primary font-bold border-l border-r border-blue-200">
+                  一致（剛度 K=I/L、軸変形無視）
+                </td>
+                <td class="py-3 px-4">軸変形やせん断変形の混入に注意</td>
+                <td class="py-3 px-4">一致するが図面化や可視化が困難</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 font-bold text-slate-800 bg-slate-50/50">3次元応力度可視化</td>
+                <td class="py-3 px-4 bg-blue-50/30 text-academic-primary font-bold border-l border-r border-blue-200">
+                  標準搭載（引張赤・圧縮青・BMD重畳）
+                </td>
+                <td class="py-3 px-4">可能だが設定が極めて煩雑で講義向きでない</td>
+                <td class="py-3 px-4">不可（平面グラフ・数値表のみ）</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 font-bold text-slate-800 bg-slate-50/50">講義・演習問題の作図</td>
+                <td class="py-3 px-4 bg-blue-50/30 text-academic-primary font-bold border-l border-r border-blue-200">
+                  問題図・M図・変形図をワンクリックSVG出力
+                </td>
+                <td class="py-3 px-4">CAD等での再トレース・清書作業が必要</td>
+                <td class="py-3 px-4">Excelグラフ等の切り貼りに留まる</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 font-bold text-slate-800 bg-slate-50/50">動作環境・機密性</td>
+                <td class="py-3 px-4 bg-blue-50/30 text-academic-primary font-bold border-l border-r border-blue-200">
+                  完全オフライン・通信0（授業中も安全）
+                </td>
+                <td class="py-3 px-4">高額ライセンス認証サーバー常時必須</td>
+                <td class="py-3 px-4">オフライン可能</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 特長解説カード3選 -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs font-serif">
+        <div class="p-4 bg-slate-50 border border-slate-200 rounded">
+          <h4 class="font-bold text-slate-900 text-sm font-sans mb-1.5 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-academic-primary"></span>
+            1. 講義中の即問即答に応える即時性
+          </h4>
+          <p class="text-slate-600 leading-relaxed">
+            学生から「もし中央の柱をピンにしたら？」「梁の剛性を2倍にしたら反力はどう変わるか？」と問われた際、講義を中断することなく数クリックで形状を変更し、変形図やM図の変化をその場で投影・検証できます。
+          </p>
+        </div>
+
+        <div class="p-4 bg-slate-50 border border-slate-200 rounded">
+          <h4 class="font-bold text-slate-900 text-sm font-sans mb-1.5 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-academic-primary"></span>
+            2. 教科書の演習問題と完全一致する剛度入力に対応
+          </h4>
+          <p class="text-slate-600 leading-relaxed">
+            実務用FEMソフトでは部材諸元の厳密な入力が必須であるため、教科書の「部材剛比 k」という抽象化された手計算問題を扱うにはデータ入力作業がやや煩雑となります。本ツールは「剛度入力モード（軸変形自動無視）」を備えており、手計算の模範解答と一致します。
+          </p>
+        </div>
+
+        <div class="p-4 bg-slate-50 border border-slate-200 rounded">
+          <h4 class="font-bold text-slate-900 text-sm font-sans mb-1.5 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-academic-primary"></span>
+            3. 問題の清書・簡易ベクター編集が完結
+          </h4>
+          <p class="text-slate-600 leading-relaxed">
+            スパン寸法線、支点記号、荷重ベクトルがSVGで自動製図されます。内蔵の「SVG編集モード」により、画面上で文字位置の微調整や不要な注記の消去、数値の書き換えを行ってそのままWord等へベクター貼り付け可能です。
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 01 操作画面構成と解析ワークスペース -->
+  <section id="workspace" class="py-14 border-b border-academic-border bg-[#f8fafc]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      
+      <div class="flex items-baseline space-x-3 mb-6">
+        <span class="section-num text-xl">01</span>
+        <div>
+          <h2 class="text-lg sm:text-xl font-bold font-serif text-slate-900">操作画面構成と解析ワークスペース</h2>
+          <p class="text-xs text-slate-500 font-serif">講義現場での実演および演習問題作成を滞らせない直観的なワンウィンドウ設計</p>
+        </div>
+      </div>
+
+      <!-- メインUI キャプチャ枠（図1） -->
+      <div class="bg-white p-3 sm:p-5 rounded border border-slate-300 shadow-sm">
+        <figure class="m-0">
+          <img 
+            src="ss-1.png" 
+            alt="構造解析 ワークスペース画面（2Dモデリングおよび3D可視化ウインドウ）" 
+            class="w-full h-auto object-cover border border-slate-300 bg-black block rounded"
+            onerror="this.onerror=null; this.src='ss-1.jpg';"
+          />
+          <figcaption class="mt-3 text-xs text-slate-600 font-serif text-center">
+            <strong>図1</strong> 統合解析ワークスペース画面（左：2Dグリッドによる部材・境界・荷重設定 / 中央：解析結果および3D可視化ダイアログ / 右：節点座標・部材剛性パラメータリスト）
+          </figcaption>
+        </figure>
+
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-slate-200 text-xs">
+          <div class="p-3 bg-slate-50 border border-slate-200 rounded">
+            <h4 class="font-bold text-slate-900 font-serif mb-1">直感的なモデリング</h4>
+            <p class="text-slate-600 leading-relaxed font-serif">
+              1.0mグリッド（設定変更可）上にマウスで節点・部材を配置。支点条件（固定端・ピン・ローラー）や節点剛結・ピン接合も視覚的に即時指定可能。
+            </p>
+          </div>
+          <div class="p-3 bg-slate-50 border border-slate-200 rounded">
+            <h4 class="font-bold text-slate-900 font-serif mb-1">荷重条件</h4>
+            <p class="text-slate-600 leading-relaxed font-serif">
+              節点集中荷重、モーメント荷重、部材に対する等分布荷重、等変（三角）分布荷重を即座に付与。（＊台形分布には未対応）
+            </p>
+          </div>
+          <div class="p-3 bg-slate-50 border border-slate-200 rounded">
+            <h4 class="font-bold text-slate-900 font-serif mb-1">ワンクリック即時解析</h4>
+            <p class="text-slate-600 leading-relaxed font-serif">
+              直接剛性法（マトリクス変位法）による線形弾性解析を実行。変形形状、端部曲げモーメント、反力を即時に演算・展開。
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 02 3次元応力可視化機能（荷重進展ギャラリー ＋ 問題図横並び） -->
+  <section id="stress-3d" class="py-14 border-b border-academic-border bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      
+      <div class="flex items-baseline space-x-3 mb-6">
+        <span class="section-num text-xl">02</span>
+        <div>
+          <h2 class="text-lg sm:text-xl font-bold font-serif text-slate-900">3次元空間での応力度コンターと曲げひび割れ挙動</h2>
+          <p class="text-xs text-slate-500 font-serif">荷重増加に伴う変形・応力分布の推移と、出題用モデル図の対比</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        
+        <!-- 左側：3D荷重進展（ss-2, ss-3, ss-4）コンパクトギャラリー (8カラム) -->
+        <div class="lg:col-span-8 bg-slate-50 border border-slate-300 p-4 rounded flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between pb-2 mb-3 border-b border-slate-200">
+              <span class="text-xs font-mono font-bold text-slate-800">荷重増加に伴う3D応力・変形・ひび割れ進展の推移</span>
+              <span class="text-[10px] font-mono text-slate-500">Three.js 3D Engine</span>
+            </div>
+            
+            <div class="grid grid-cols-3 gap-2.5">
+              <!-- ss-2 -->
+              <div class="bg-black/90 p-1 rounded border border-slate-300">
+                <img src="ss-2.png" alt="無載荷状態" class="w-full h-auto object-contain aspect-square">
+                <p class="mt-1.5 text-[10px] text-slate-600 font-serif text-center font-bold">
+                  ① 無載荷（初期形状）
+                </p>
+                <p class="text-[9px] text-slate-500 text-center leading-tight">応力・変形ゼロ</p>
+              </div>
+
+              <!-- ss-3 -->
+              <div class="bg-black/90 p-1 rounded border border-slate-300">
+                <img src="ss-3.png" alt="中荷重載荷" class="w-full h-auto object-contain aspect-square">
+                <p class="mt-1.5 text-[10px] text-slate-600 font-serif text-center font-bold">
+                  ② 中荷重載荷
+                </p>
+                <p class="text-[9px] text-slate-500 text-center leading-tight">$|\sigma|\text{max} = 2.73\text{N/mm}^2$</p>
+              </div>
+
+              <!-- ss-4 -->
+              <div class="bg-black/90 p-1 rounded border border-slate-300">
+                <img src="ss-4.png" alt="大荷重載荷" class="w-full h-auto object-contain aspect-square">
+                <p class="mt-1.5 text-[10px] text-slate-600 font-serif text-center font-bold">
+                  ③ 大荷重（水平変形）
+                </p>
+                <p class="text-[9px] text-slate-500 text-center leading-tight">柱脚ひび割れ演出</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-3 pt-2.5 border-t border-slate-200 text-[11px] text-slate-600 font-serif flex items-center justify-between">
+            <span>※ <strong class="text-rose-700">赤色</strong>：引張応力 / <strong class="text-blue-700">青色</strong>：圧縮応力 / 半透明リボン：曲げモーメント（BMD）</span>
+            <span class="font-mono text-[10px] text-slate-400">OrbitControls 360°操作対応</span>
+          </div>
+        </div>
+
+        <!-- 右側：prob1.svg（出題図）を横並びに配置 (4カラム) -->
+        <div class="lg:col-span-4 bg-white border border-slate-300 p-4 rounded flex flex-col justify-between shadow-sm">
+          <div>
+            <div class="flex items-center justify-between pb-2 mb-3 border-b border-slate-200">
+              <span class="text-xs font-mono font-bold text-slate-800">出題用 2層ラーメン図</span>
+              <span class="text-[10px] font-mono bg-slate-100 border border-slate-300 px-1.5 py-0.5 rounded text-slate-600">prob1.svg</span>
+            </div>
+            <div class="bg-white flex items-center justify-center p-2 min-h-[190px]">
+              <img src="prob1.svg" alt="2層ラーメン構造モデル問題図" class="max-h-48 w-auto object-contain mx-auto">
+            </div>
+          </div>
+          <div class="mt-2 pt-2 border-t border-slate-200 text-[11px] text-slate-600 font-serif">
+            左記の3D解析に対応する2層ラーメンの出題図面。水平荷重・分布荷重・スパン寸法線が自動製図されています。
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 03 出題から模範解答（変形・応力図）への完全自動展開フロー -->
+  <section id="diagram-flow" class="py-14 border-b border-academic-border bg-[#f8fafc]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      
+      <div class="flex items-baseline space-x-3 mb-4">
+        <span class="section-num text-xl">03</span>
+        <div>
+          <h2 class="text-lg sm:text-xl font-bold font-serif text-slate-900">直感入力から出題・模範解答（変形・応力図）への完全自動展開</h2>
+          <p class="text-xs text-slate-500 font-serif">
+            わずかなマウス操作入力から「問題図 → 詳細変形図 → 曲げモーメント図」が一瞬で生成される実例
+          </p>
+        </div>
+      </div>
+
+      <p class="text-xs sm:text-sm text-slate-700 font-serif mb-6 leading-relaxed">
+        「問題図の作成」と「解答図の作成」：本ツールなら、キャンバス上で部材・荷重をクリック配置するだけで、寸法入りの演習問題図から、部材端部ピン接合、分布荷重による部材たわみの補正（理論曲線を2分割3次ベジェ曲線にあてはめ）、放物線ピーク曲げモーメントまでが完全に自動展開されます。
+      </p>
+
+      <!-- 4連カード（ss-5 -> prob2 -> def2 -> moment2） -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <!-- Step 0: ss-5.png (入力画面) -->
+        <div class="border-2 border-academic-primary/30 rounded bg-white p-3 flex flex-col justify-between shadow-sm relative">
+          <div class="absolute -top-2.5 left-3 px-2 py-0.5 bg-academic-primary text-white text-[10px] font-mono font-bold rounded">
+            START
+          </div>
+          <div>
+            <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-200 mt-1">
+              <span class="text-xs font-mono font-bold text-slate-900">入力：直感モデリング</span>
+              <span class="text-[10px] font-mono px-1 py-0.5 bg-slate-100 border border-slate-300 text-slate-600 rounded">ss-5</span>
+            </div>
+            <div class="bg-black/95 rounded min-h-[190px] flex items-center justify-center p-1.5 border border-slate-300">
+              <img src="ss-5.png" alt="2次元キャンバス上でのフレーム・荷重入力画面" class="max-h-44 w-auto object-contain mx-auto">
+            </div>
+          </div>
+          <div class="mt-2.5 pt-2 border-t border-slate-200 text-[11px] text-slate-600 font-serif leading-snug">
+            グリッド上を数回クリックし、右梁部材の左端ピン、左等分布、右等変三角分布などを即時入力。
+          </div>
+        </div>
+
+        <!-- Step 1: prob2.svg (問題図) -->
+        <div class="border border-slate-300 rounded bg-white p-3 flex flex-col justify-between shadow-sm relative">
+          <div>
+            <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-200">
+              <span class="text-xs font-mono font-bold text-slate-900">① 演習問題図</span>
+              <span class="text-[10px] font-mono px-1.5 py-0.5 bg-slate-100 border border-slate-300 text-slate-600 rounded">prob2</span>
+            </div>
+            <div class="bg-white min-h-[190px] flex items-center justify-center p-1">
+              <img src="prob2.svg" alt="演習問題図（等分布・三角分布荷重・左端ピン）" class="max-h-44 w-auto object-contain mx-auto">
+            </div>
+          </div>
+          <div class="mt-2.5 pt-2 border-t border-slate-200 text-[11px] text-slate-600 font-serif leading-snug">
+            入力データから寸法線・荷重記号・支点を自動製図。課題プリント用原稿として即座に出力可能。
+          </div>
+        </div>
+
+        <!-- Step 2: def2.svg (変形図) -->
+        <div class="border border-slate-300 rounded bg-white p-3 flex flex-col justify-between shadow-sm relative">
+          <div>
+            <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-200">
+              <span class="text-xs font-mono font-bold text-slate-900">② 詳細変形図</span>
+              <span class="text-[10px] font-mono px-1.5 py-0.5 bg-blue-50 border border-blue-200 text-academic-primary rounded">def2</span>
+            </div>
+            <div class="bg-white min-h-[190px] flex items-center justify-center p-1">
+              <img src="def2.svg" alt="部材変形図（たわみ角法骨組変形＋分布荷重たわみ補正）" class="max-h-44 w-auto object-contain mx-auto">
+            </div>
+          </div>
+          <div class="mt-2.5 pt-2 border-t border-slate-200 text-[11px] text-slate-600 font-serif leading-snug">
+            骨組変形（青線）に加え、分布荷重による梁たわみ補正（赤線）と最大たわみ量 を正確に算定・表示。
+          </div>
+        </div>
+
+        <!-- Step 3: moment2.svg (M図) -->
+        <div class="border border-slate-300 rounded bg-white p-3 flex flex-col justify-between shadow-sm relative">
+          <div>
+            <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-200">
+              <span class="text-xs font-mono font-bold text-slate-900">③ 曲げモーメント図</span>
+              <span class="text-[10px] font-mono px-1.5 py-0.5 bg-rose-50 border border-rose-200 text-rose-800 rounded">moment2</span>
+            </div>
+            <div class="bg-white min-h-[190px] flex items-center justify-center p-1">
+              <img src="moment2.svg" alt="曲げモーメント図（中央ピンM=0、放物線Mmax）" class="max-h-44 w-auto object-contain mx-auto">
+            </div>
+          </div>
+          <div class="mt-2.5 pt-2 border-t border-slate-200 text-[11px] text-slate-600 font-serif leading-snug">
+            ピンの M=0、放物線のピーク値、各柱頭・柱脚の曲げモーメントを正確に描画した模範解答。
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 出力操作の案内バー -->
+      <div class="mt-6 bg-white border border-slate-200 rounded p-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-serif shadow-sm">
+        <div class="text-slate-600">
+          <strong class="text-slate-900 font-sans">講義資料への貼付:</strong> 各図面の右上にある「PNGコピー」または「SVGコピー」ボタンを押すだけで、WordやPowerPointの試験原稿へ直接ベクター貼り付け（Ctrl+V）が可能です。
+        </div>
+        <div class="flex items-center gap-2 shrink-0 font-mono text-[11px]">
+          <span class="bg-emerald-600 text-white px-2.5 py-1 rounded shadow-sm font-sans font-bold">PNG直接コピー</span>
+          <span class="bg-sky-600 text-white px-2.5 py-1 rounded shadow-sm font-sans font-bold">SVGベクターコピー</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 04 解析理論およびシステム仕様 -->
+  <section id="specifications" class="py-14 border-b border-academic-border bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      
+      <div class="flex items-baseline space-x-3 mb-6">
+        <span class="section-num text-xl">04</span>
+        <div>
+          <h2 class="text-lg sm:text-xl font-bold font-serif text-slate-900">解析理論およびシステム仕様</h2>
+          <p class="text-xs text-slate-500 font-serif">直接剛性法（マトリクス変位法）に基づく定式化と簡明なデータスキーマ</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        
+        <!-- 表2: 技術仕様表 -->
+        <div class="bg-white border border-slate-300 rounded overflow-hidden shadow-sm">
+          <div class="bg-slate-100 px-4 py-2.5 border-b border-slate-300 flex items-center justify-between">
+            <span class="text-xs font-mono font-bold text-slate-800">表2 システム解析仕様</span>
+            <span class="text-[10px] font-mono text-slate-500">Tauri Native Core</span>
+          </div>
+          <div class="p-4 text-xs font-serif">
+            <table class="w-full border-collapse">
+              <tbody class="divide-y divide-slate-200">
+                <tr>
+                  <td class="py-2.5 font-bold text-slate-800 w-1/3">動作環境</td>
+                  <td class="py-2.5 text-slate-600">Windows 10 / 11 (64bit) デスクトップネイティブ</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 font-bold text-slate-800">通信要件</td>
+                  <td class="py-2.5 text-slate-600 font-bold text-academic-primary">完全オフライン動作（外部通信一切なし）</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 font-bold text-slate-800">解析手法</td>
+                  <td class="py-2.5 text-slate-600">直接剛性法（マトリクス変位法）、線形弾性微小変形理論</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 font-bold text-slate-800">節点自由度</td>
+                  <td class="py-2.5 text-slate-600">3自由度/節点（水平変位, 鉛直変位, 回転角）</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 font-bold text-slate-800">対応荷重</td>
+                  <td class="py-2.5 text-slate-600">
+                    ・節点集中荷重、モーメント<br/>
+                    ・等分布荷重、等変分布荷重（＊台形には未対応）
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 font-bold text-slate-800">剛性入力モード</td>
+                  <td class="py-2.5 text-slate-600">
+                    ・剛度入力（K=I/L、軸変形無視）<br/>
+                    ・詳細入力（E, I, A 指定）
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 font-bold text-slate-800">変形・応力図の作成</td>
+                  <td class="py-2.5 text-slate-600">
+                    ・たわみ：5次理論曲線を2分割3次ベジェ曲線でSVGとして高精度表示<br/>
+                    ・N,Q,M：理論通りの曲線をSVG表示
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 font-bold text-slate-800">境界・端部条件</td>
+                  <td class="py-2.5 text-slate-600">固定端、ピン支点、ローラー支点 / 剛接合、ピン接合</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 外部連携・JSONスキーマ -->
+        <div class="bg-white border border-slate-300 rounded p-4 shadow-sm">
+          <div class="flex items-center justify-between pb-2 mb-3 border-b border-slate-200">
+            <span class="text-xs font-mono font-bold text-slate-800">データ互換性 & 生成AIプロンプト連携</span>
+            <span class="text-[10px] font-mono text-slate-500">JSON I/O</span>
+          </div>
+          <p class="text-xs text-slate-600 font-serif leading-relaxed mb-3">
+            本ソフトウェアは、節点座標・部材・荷重条件を構造化されたJSON形式で入出力可能です。生成AIに対して「高さ4m・スパン6mの門型ラーメン、梁に等分布荷重20kN/mを付与するJSON」と指示することで、自然言語プロンプトから骨組モデルを一瞬でインポートできます。
+          </p>
+
+          <div class="bg-slate-900 text-slate-200 p-3.5 rounded font-mono text-[11px] overflow-x-auto leading-normal">
+            <span class="text-slate-500">// 骨組定義 JSON スキーマ例</span><br/>
+            {<br/>
+            &nbsp;&nbsp;<span class="text-sky-300">"gridSizeM"</span>: 1.0,<br/>
+            &nbsp;&nbsp;<span class="text-sky-300">"nodes"</span>: [{"id": 0, "x": 0.0, "y": 0.0}, ...],<br/>
+            &nbsp;&nbsp;<span class="text-sky-300">"members"</span>: [{"id": 0, "n1": 0, "n2": 1, "K": 1.0, "inputMode": "simple"}],<br/>
+            &nbsp;&nbsp;<span class="text-sky-300">"loads"</span>: [{"type": 1, "n1": 1, "n2": 2, "w": 20.0}],<br/>
+            &nbsp;&nbsp;<span class="text-sky-300">"supports"</span>: [{"n": 0, "rx": 1, "ry": 1, "rm": 1}]<br/>
+            }
+          </div>
+          <p class="text-[11px] text-slate-500 font-serif mt-2.5">
+            ※ 課題の生成スクリプトや研究室内のモデル共有にもそのまま活用いただけます。
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 配布対象を教員に限定している理由とオフライン個別認証について -->
+  <section id="policy" class="py-14 border-b border-academic-border bg-[#fffdfa]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      
+      <div class="border-2 border-amber-300/80 bg-amber-50/40 rounded-lg p-6 sm:p-8 shadow-sm">
+        
+        <div class="flex items-center space-x-2.5 pb-3 mb-4 border-b border-amber-200">
+          <span class="w-3 h-3 rounded-full bg-academic-accent"></span>
+          <h3 class="text-base sm:text-lg font-serif font-bold text-slate-900">
+            配布対象を「講義担当教員」に限定している理由について
+          </h3>
+        </div>
+
+        <div class="text-xs sm:text-sm text-slate-700 font-serif space-y-4 leading-relaxed">
+          <p>
+            構造力学教育の根幹は、学生自身が手計算（力の釣合式、曲げモーメント図の作図、たわみ角法の連立方程式）を通じて<strong>「力の流れや変形を感覚として身につける学習プロセス」</strong>にあります。
+          </p>
+          <p>
+            もし本ツールが無秩序に学生間へ拡散された場合、自ら手を動かして試行錯誤する前に安易な答え合わせツールとして利用されてしまい、結果として力学の本質的な教育効果を損なう恐れがあります。そのため、本ソフトウェアは<strong>大学・高専等の講義担当教員（専任・非常勤）に限定</strong>して無償提供し、学生への直接配布はお断りしております。
+          </p>
+          
+          <div class="bg-white border border-amber-200 rounded p-4 mt-4 font-sans text-xs space-y-3">
+            <div class="font-bold text-slate-800 text-sm font-serif">【運用体制：完全オフライン ＆ ハードウェア個別認証】</div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+              <div class="border-l-2 border-academic-primary pl-3">
+                <span class="font-bold text-slate-900 block font-serif">完全オフライン動作の利点</span>
+                <span class="text-slate-600 text-[11px] mt-1 block">
+                  インターネット接続がない講義室でも確実に起動するので、環境によらず授業中でも安心して使用できます。
+                </span>
+              </div>
+              <div class="border-l-2 border-academic-accent pl-3">
+                <span class="font-bold text-slate-900 block font-serif">初回ハードウェア認証（個別ライセンス発行）</span>
+                <span class="text-slate-600 text-[11px] mt-1 block">
+                  学生によるUSBコピー等での不正利用を防ぐため、教員PC固有の「マシン識別コード」に基づき暗号化されたライセンスファイル（.lic）を個別に発行いたします（無料）。
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 認証手順の流れ図（最短1往復版） -->
+          <div class="pt-4 border-t border-amber-200/80">
+            <span class="font-bold text-slate-800 text-xs block mb-2 font-sans">初回ライセンス登録の流れ（費用は完全無料です）：</span>
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-2 text-center text-xs font-sans">
+              <div class="bg-white p-2.5 rounded border border-amber-200">
+                <span class="font-mono font-bold text-academic-primary block text-sm">STEP 1</span>
+                <span class="text-[11px] text-slate-700">上部ボタンよりアプリ（.msi）をダウンロード</span>
+              </div>
+              <div class="bg-white p-2.5 rounded border border-amber-200">
+                <span class="font-mono font-bold text-academic-primary block text-sm">STEP 2</span>
+                <span class="text-[11px] text-slate-700">起動画面に表示される「マシン識別コード」をコピー</span>
+              </div>
+              <div class="bg-white p-2.5 rounded border border-amber-200">
+                <span class="font-mono font-bold text-academic-primary block text-sm">STEP 3</span>
+                <span class="text-[11px] text-slate-700">下記フォームにコードを貼付して利用申請を送信</span>
+              </div>
+              <div class="bg-white p-2.5 rounded border border-amber-200">
+                <span class="font-mono font-bold text-academic-primary block text-sm">STEP 4</span>
+                <span class="text-[11px] text-slate-700">届いた .lic を画面にドロップして認証完了！</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 利用申請・登録セクション（FormSubmit非同期送信・画面遷移なし対応） -->
+
+
+  <section id="register" class="py-16 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      
+      <div class="border border-academic-border rounded bg-white shadow-sm overflow-hidden">
+        
+        <div class="bg-slate-100/90 px-6 py-4 border-b border-academic-border flex justify-between items-center">
+          <div>
+           ライセンス発行は、右のGoogleForm→<a href="https://docs.google.com/forms/d/e/1FAIpQLSdi5XzpfE8PUbkOp1yEUCPXtZGFHdg_3WWBpGjQev3o5I1q0Q/viewform?usp=header" target="_blank" rel="noopener noreferrer" style="color: #0366d6;">ライセンス発行フォーム</a> よりご申請ください。
+            
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <!-- ==============================================================================
+     [フッター] 利用規約・許諾範囲・禁止事項・免責事項・著作権表示
+     「2 (1).html」の既存 <footer> タグとそのまま差し替えてご使用いただけます。
+     ============================================================================== -->
+<footer class="border-t border-academic-border bg-[#f8fafc] py-12 text-xs font-serif text-slate-600">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 space-y-8">
+
+    <!-- 1. 利用規約・限定提供の明記 -->
+    <div class="bg-white border border-slate-300 rounded p-6 sm:p-7 shadow-[0_1px_3px_rgba(0,0,0,0.03)] space-y-4">
+      <div class="flex items-center space-x-2 border-b border-slate-200 pb-3">
+        <span class="inline-block w-2 h-2 rounded-full bg-slate-700"></span>
+        <h4 class="font-bold text-slate-900 text-sm tracking-tight font-serif">
+          利用規約および限定提供について
+        </h4>
+        <span class="text-[11px] font-mono text-slate-400">| Terms of Use</span>
+      </div>
+
+      <p class="leading-relaxed text-slate-700 text-justify">
+        本ツールは教育・研究機関における学習支援を目的として無償提供を行っておりますが、<strong>オープンソースソフトウェア（改変・二次配布の自由許諾）ではありません</strong>。著作権は研究室に帰属し、以下の条件のもとでのみ利用が許諾されます。
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
+        <!-- 許諾範囲 -->
+        <div class="p-3.5 bg-slate-50 border border-slate-200 rounded space-y-1.5">
+          <div class="font-bold text-slate-900 flex items-center space-x-1.5">
+            <span class="text-emerald-700 font-mono">●</span>
+            <span>利用対象者および許諾範囲</span>
+          </div>
+          <ul class="text-[11px] text-slate-600 space-y-1 pl-4 list-disc leading-relaxed">
+            <li><strong>利用対象者:</strong> 建築構造分野等の教育・研究に携わる教員、研究者、およびその指導下にある関係者</li>
+            <li><strong>許諾範囲:</strong> 講義、演習、ゼミナール、学術研究における学習支援目的での私的・学内利用</li>
+          </ul>
+        </div>
+
+        <!-- 禁止事項 -->
+        <div class="p-3.5 bg-rose-50/50 border border-rose-200 rounded space-y-1.5">
+          <div class="font-bold text-rose-950 flex items-center space-x-1.5">
+            <span class="text-rose-600 font-mono">✕</span>
+            <span>禁止事項</span>
+          </div>
+          <ul class="text-[11px] text-rose-900/80 space-y-1 pl-4 list-disc leading-relaxed">
+            <li>本ソフトウェア（インストーラーパッケージを含む）の無断での二次配布、転載、Web上への再公開</li>
+            <li>商業目的の設計業務や営利活動での無断利用</li>
+            <li>プログラムのリバースエンジニアリング、逆コンパイル、内部リソースの抽出・改変</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 免責事項 & サードパーティライセンス -->
+      <div class="pt-3 border-t border-slate-200/80 text-[11px] text-slate-500 leading-relaxed space-y-1.5">
+        <p>
+          <strong>【免責事項】</strong> 本ツールは構造力学の理解支援を目的とした教育用簡易解析ソフトウェアです。計算結果の完全性・正確性は保証されず、実務設計や確認申請、施工現場での安全確認等への適用は固く禁じます。本ツールの利用により生じたいかなる損害についても、開発者および所属機関は一切の責任を負いません。
+        </p>
+        <p class="font-mono text-[10px] text-slate-400">
+          ※ 3Dグラフィックス描画エンジンとしてオープンソースライブラリ「Three.js」（MIT License / © Three.js Authors）を使用しています。    サードパーティ製ライブラリ（Three.js 等）の著作権および詳細なライセンス規約については、
+    <a href="https://github.com/k-a-AML/frame-analysis-app" target="_blank" rel="noopener noreferrer" style="color: #0366d6;">GitHubリポジトリ</a> の README をご参照ください。
+  </p>
+        </p>
+      </div>
+    </div>
+
+    <!-- 2. コピーライト・プロジェクト情報 -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2 text-[11px] text-slate-500">
+      <div>
+        <p class="font-bold text-slate-800 text-xs">近畿大学建築学部 建築数理研究室</p>
+        <p class="text-slate-500 mt-0.5 font-serif"> 2次元フレーム簡易解析 ワークスペース</p>
+      </div>
+      <div class="text-center sm:text-right font-mono text-[10px] text-slate-400 leading-tight">
+        <p>&copy; 2026 Architectural Mathematics Laboratory. All Rights Reserved.</p>
+        <p class="mt-0.5">Windows 10 / 11 (64bit) Native Application</p>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+  <!-- FormSubmit AJAX非同期送信スクリプト（画面遷移・リダイレクト防止） -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const regForm = document.getElementById('academicRegForm');
+      const regBtn = document.getElementById('regSubmitBtn');
+      const successCard = document.getElementById('regSuccessCard');
+
+      if (regForm) {
+        regForm.addEventListener('submit', async (e) => {
+          e.preventDefault(); // ブラウザ標準の画面遷移（リダイレクト）を遮断
+
+          regBtn.disabled = true;
+          const originalBtnText = regBtn.textContent;
+          regBtn.textContent = '申請を送信中...';
+
+          const formData = new FormData(regForm);
+
+          // 送信先URLの取得（二重防御）
+          let targetUrl = regForm.action;
+          if (targetUrl.includes('formsubmit.co/') && !targetUrl.includes('formsubmit.co/ajax/')) {
+            targetUrl = targetUrl.replace('formsubmit.co/', 'formsubmit.co/ajax/');
+          }
+
+          try {
+            const response = await fetch(targetUrl, {
+              method: 'POST',
+              body: formData,
+              headers: {
+                'Accept': 'application/json' // FormSubmit に JSON レスポンスを要求
+              }
+            });
+
+            if (response.ok) {
+              regForm.classList.add('hidden');
+              successCard.classList.remove('hidden');
+            } else {
+              const resData = await response.json().catch(() => ({}));
+              console.error('Submission failed:', resData);
+              alert('送信に失敗しました。時間をおいて再度お試しください。');
+              regBtn.disabled = false;
+              regBtn.textContent = originalBtnText;
+            }
+          } catch (err) {
+            console.error('Submit Error:', err);
+            alert('通信エラーが発生しました。インターネット接続をご確認のうえ、再度送信してください。');
+            regBtn.disabled = false;
+            regBtn.textContent = originalBtnText;
+          }
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
