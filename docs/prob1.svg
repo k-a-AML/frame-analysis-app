@@ -1,0 +1,118 @@
+<svg width="400px" height="400px" viewBox="0 0 400 400" version="1.1" xmlns="http://www.w3.org/2000/svg" style="background:#ffffff; border:1px solid #cbd5e1; border-radius:4px; cursor:grab; overflow:hidden;">
+  <g class="zoom-pan-group" transform="translate(0,0) scale(1)"><line x1="133" y1="390" x2="133" y2="400" stroke="#334155" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="133" y1="395" x2="253" y2="395" stroke="#334155" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="253" y1="390" x2="253" y2="400" stroke="#334155" stroke-width="1.2" stroke-linecap="round"/>
+<g class="text-label" data-text-role="composite">
+  <text class="text-stroke" x="193" y="391" font-family="'Segoe UI', Meiryo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" xml:space="preserve" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="none">5.00m</text>
+  <text class="text-fill" x="193" y="391" font-family="'Segoe UI', Meiryo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" xml:space="preserve" fill="#334155">5.00m</text>
+</g>
+<line x1="328" y1="80" x2="338" y2="80" stroke="#334155" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="333" y1="80" x2="333" y2="200" stroke="#334155" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="328" y1="200" x2="338" y2="200" stroke="#334155" stroke-width="1.2" stroke-linecap="round"/>
+<g class="text-label" data-text-role="composite">
+  <text class="text-stroke" x="329" y="140" font-family="'Segoe UI', Meiryo, sans-serif" font-size="12" font-weight="bold" transform="rotate(-90 329, 140)" text-anchor="middle" xml:space="preserve" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="none">5.00m</text>
+  <text class="text-fill" x="329" y="140" font-family="'Segoe UI', Meiryo, sans-serif" font-size="12" font-weight="bold" transform="rotate(-90 329, 140)" text-anchor="middle" xml:space="preserve" fill="#334155">5.00m</text>
+</g>
+<line x1="333" y1="200" x2="333" y2="320" stroke="#334155" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="328" y1="320" x2="338" y2="320" stroke="#334155" stroke-width="1.2" stroke-linecap="round"/>
+<g class="text-label" data-text-role="composite">
+  <text class="text-stroke" x="329" y="260" font-family="'Segoe UI', Meiryo, sans-serif" font-size="12" font-weight="bold" transform="rotate(-90 329, 260)" text-anchor="middle" xml:space="preserve" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="none">5.00m</text>
+  <text class="text-fill" x="329" y="260" font-family="'Segoe UI', Meiryo, sans-serif" font-size="12" font-weight="bold" transform="rotate(-90 329, 260)" text-anchor="middle" xml:space="preserve" fill="#334155">5.00m</text>
+</g>
+<g transform="translate(133, 320) rotate(-360.00)">
+  <line x1="-15" y1="0" x2="15" y2="0" stroke="#000000" stroke-width="1.3" stroke-linecap="round"/>
+  <line x1="-15" y1="10" x2="-10" y2="0" stroke="#000000" stroke-width="1.3" stroke-linecap="round"/>
+  <line x1="-10" y1="10" x2="-5" y2="0" stroke="#000000" stroke-width="1.3" stroke-linecap="round"/>
+  <line x1="-5" y1="10" x2="0" y2="0" stroke="#000000" stroke-width="1.3" stroke-linecap="round"/>
+  <line x1="0" y1="10" x2="5" y2="0" stroke="#000000" stroke-width="1.3" stroke-linecap="round"/>
+  <line x1="5" y1="10" x2="10" y2="0" stroke="#000000" stroke-width="1.3" stroke-linecap="round"/>
+</g>
+<g transform="translate(253, 320) rotate(-360.00)">
+  <line x1="-15" y1="0" x2="15" y2="0" stroke="#000000" stroke-width="1.3" stroke-linecap="round"/>
+  <line x1="-15" y1="10" x2="-10" y2="0" stroke="#000000" stroke-width="1.3" stroke-linecap="round"/>
+  <line x1="-10" y1="10" x2="-5" y2="0" stroke="#000000" stroke-width="1.3" stroke-linecap="round"/>
+  <line x1="-5" y1="10" x2="0" y2="0" stroke="#000000" stroke-width="1.3" stroke-linecap="round"/>
+  <line x1="0" y1="10" x2="5" y2="0" stroke="#000000" stroke-width="1.3" stroke-linecap="round"/>
+  <line x1="5" y1="10" x2="10" y2="0" stroke="#000000" stroke-width="1.3" stroke-linecap="round"/>
+</g>
+<line x1="133" y1="320" x2="133" y2="200" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+<g class="text-label" data-text-role="composite">
+  <text class="text-stroke" x="147" y="275" font-family="'Segoe UI', Meiryo, sans-serif" font-size="12" font-weight="bold" transform="rotate(-90 147, 275)" text-anchor="middle" xml:space="preserve" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="none">k=2</text>
+  <text class="text-fill" x="147" y="275" font-family="'Segoe UI', Meiryo, sans-serif" font-size="12" font-weight="bold" transform="rotate(-90 147, 275)" text-anchor="middle" xml:space="preserve" fill="#000000">k=2</text>
+</g>
+<line x1="133" y1="200" x2="133" y2="80" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+<g class="text-label" data-text-role="composite">
+  <text class="text-stroke" x="147" y="155" font-family="'Segoe UI', Meiryo, sans-serif" font-size="12" font-weight="bold" transform="rotate(-90 147, 155)" text-anchor="middle" xml:space="preserve" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="none">k=2</text>
+  <text class="text-fill" x="147" y="155" font-family="'Segoe UI', Meiryo, sans-serif" font-size="12" font-weight="bold" transform="rotate(-90 147, 155)" text-anchor="middle" xml:space="preserve" fill="#000000">k=2</text>
+</g>
+<line x1="133" y1="80" x2="253" y2="80" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+<g class="text-label" data-text-role="composite">
+  <text class="text-stroke" x="178" y="95" font-family="'Segoe UI', Meiryo, sans-serif" font-size="12" font-weight="bold" transform="rotate(0 178, 95)" text-anchor="middle" xml:space="preserve" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="none">k=1</text>
+  <text class="text-fill" x="178" y="95" font-family="'Segoe UI', Meiryo, sans-serif" font-size="12" font-weight="bold" transform="rotate(0 178, 95)" text-anchor="middle" xml:space="preserve" fill="#000000">k=1</text>
+</g>
+<line x1="253" y1="80" x2="253" y2="200" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+<g class="text-label" data-text-role="composite">
+  <text class="text-stroke" x="267" y="155" font-family="'Segoe UI', Meiryo, sans-serif" font-size="12" font-weight="bold" transform="rotate(-90 267, 155)" text-anchor="middle" xml:space="preserve" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="none">k=2</text>
+  <text class="text-fill" x="267" y="155" font-family="'Segoe UI', Meiryo, sans-serif" font-size="12" font-weight="bold" transform="rotate(-90 267, 155)" text-anchor="middle" xml:space="preserve" fill="#000000">k=2</text>
+</g>
+<line x1="133" y1="200" x2="253" y2="200" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+<g class="text-label" data-text-role="composite">
+  <text class="text-stroke" x="178" y="215" font-family="'Segoe UI', Meiryo, sans-serif" font-size="12" font-weight="bold" transform="rotate(0 178, 215)" text-anchor="middle" xml:space="preserve" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="none">k=1</text>
+  <text class="text-fill" x="178" y="215" font-family="'Segoe UI', Meiryo, sans-serif" font-size="12" font-weight="bold" transform="rotate(0 178, 215)" text-anchor="middle" xml:space="preserve" fill="#000000">k=1</text>
+</g>
+<line x1="253" y1="200" x2="253" y2="320" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+<g class="text-label" data-text-role="composite">
+  <text class="text-stroke" x="267" y="275" font-family="'Segoe UI', Meiryo, sans-serif" font-size="12" font-weight="bold" transform="rotate(-90 267, 275)" text-anchor="middle" xml:space="preserve" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="none">k=2</text>
+  <text class="text-fill" x="267" y="275" font-family="'Segoe UI', Meiryo, sans-serif" font-size="12" font-weight="bold" transform="rotate(-90 267, 275)" text-anchor="middle" xml:space="preserve" fill="#000000">k=2</text>
+</g>
+<g class="uniform-load-vector">
+<line x1="133" y1="53" x2="133" y2="71.54276641292682" stroke="#2563eb" stroke-width="1.2" stroke-linecap="round"/>
+<polygon points="133,80 136.07818128993102,71.54276641292682 129.92181871006898,71.54276641292682" fill="#2563eb"/>
+<line x1="163" y1="53" x2="163" y2="71.54276641292682" stroke="#2563eb" stroke-width="1.2" stroke-linecap="round"/>
+<polygon points="163,80 166.07818128993102,71.54276641292682 159.92181871006898,71.54276641292682" fill="#2563eb"/>
+<line x1="193" y1="53" x2="193" y2="71.54276641292682" stroke="#2563eb" stroke-width="1.2" stroke-linecap="round"/>
+<polygon points="193,80 196.07818128993102,71.54276641292682 189.92181871006898,71.54276641292682" fill="#2563eb"/>
+<line x1="223" y1="53" x2="223" y2="71.54276641292682" stroke="#2563eb" stroke-width="1.2" stroke-linecap="round"/>
+<polygon points="223,80 226.07818128993102,71.54276641292682 219.92181871006898,71.54276641292682" fill="#2563eb"/>
+<line x1="253" y1="53" x2="253" y2="71.54276641292682" stroke="#2563eb" stroke-width="1.2" stroke-linecap="round"/>
+<polygon points="253,80 256.078181289931,71.54276641292682 249.92181871006898,71.54276641292682" fill="#2563eb"/>
+<line x1="133" y1="53" x2="253" y2="53" stroke="#2563eb" stroke-width="1.2" stroke-linecap="round"/>
+</g>
+<g class="text-label" data-text-role="composite">
+  <text class="text-stroke" x="168" y="49" font-family="'Segoe UI', Meiryo, sans-serif" font-size="12" font-weight="bold" transform="rotate(0 168, 49)" xml:space="preserve" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="none">10.0[kN/m]</text>
+  <text class="text-fill" x="168" y="49" font-family="'Segoe UI', Meiryo, sans-serif" font-size="12" font-weight="bold" transform="rotate(0 168, 49)" xml:space="preserve" fill="#2563eb">10.0[kN/m]</text>
+</g>
+<g class="uniform-load-vector">
+<line x1="133" y1="173" x2="133" y2="191.54276641292682" stroke="#2563eb" stroke-width="1.2" stroke-linecap="round"/>
+<polygon points="133,200 136.07818128993102,191.54276641292682 129.92181871006898,191.54276641292682" fill="#2563eb"/>
+<line x1="163" y1="173" x2="163" y2="191.54276641292682" stroke="#2563eb" stroke-width="1.2" stroke-linecap="round"/>
+<polygon points="163,200 166.07818128993102,191.54276641292682 159.92181871006898,191.54276641292682" fill="#2563eb"/>
+<line x1="193" y1="173" x2="193" y2="191.54276641292682" stroke="#2563eb" stroke-width="1.2" stroke-linecap="round"/>
+<polygon points="193,200 196.07818128993102,191.54276641292682 189.92181871006898,191.54276641292682" fill="#2563eb"/>
+<line x1="223" y1="173" x2="223" y2="191.54276641292682" stroke="#2563eb" stroke-width="1.2" stroke-linecap="round"/>
+<polygon points="223,200 226.07818128993102,191.54276641292682 219.92181871006898,191.54276641292682" fill="#2563eb"/>
+<line x1="253" y1="173" x2="253" y2="191.54276641292682" stroke="#2563eb" stroke-width="1.2" stroke-linecap="round"/>
+<polygon points="253,200 256.078181289931,191.54276641292682 249.92181871006898,191.54276641292682" fill="#2563eb"/>
+<line x1="133" y1="173" x2="253" y2="173" stroke="#2563eb" stroke-width="1.2" stroke-linecap="round"/>
+</g>
+<g class="text-label" data-text-role="composite">
+  <text class="text-stroke" x="168" y="169" font-family="'Segoe UI', Meiryo, sans-serif" font-size="12" font-weight="bold" transform="rotate(0 168, 169)" xml:space="preserve" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="none">10.0[kN/m]</text>
+  <text class="text-fill" x="168" y="169" font-family="'Segoe UI', Meiryo, sans-serif" font-size="12" font-weight="bold" transform="rotate(0 168, 169)" xml:space="preserve" fill="#2563eb">10.0[kN/m]</text>
+</g>
+<g class="point-load" data-node="2" data-load-index="2">
+  <line x1="85" y1="80" x2="119.1418070123307" y2="80" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/>
+  <polygon points="133,80 119.1418070123307,85.74025148547635 119.1418070123307,74.25974851452365" fill="#ef4444"/>
+</g>
+  <g class="text-label" data-text-role="composite">
+  <text class="text-stroke" x="80" y="76" font-family="'Segoe UI', Meiryo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" xml:space="preserve" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="none">100.00kN</text>
+  <text class="text-fill" x="80" y="76" font-family="'Segoe UI', Meiryo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" xml:space="preserve" fill="#ef4444">100.00kN</text>
+</g>
+<g class="point-load" data-node="1" data-load-index="3">
+  <line x1="85" y1="200" x2="119.1418070123307" y2="200" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/>
+  <polygon points="133,200 119.1418070123307,205.74025148547634 119.1418070123307,194.25974851452366" fill="#ef4444"/>
+</g>
+  <g class="text-label" data-text-role="composite">
+  <text class="text-stroke" x="80" y="196" font-family="'Segoe UI', Meiryo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" xml:space="preserve" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="none">100.00kN</text>
+  <text class="text-fill" x="80" y="196" font-family="'Segoe UI', Meiryo, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" xml:space="preserve" fill="#ef4444">100.00kN</text>
+</g>
+</g></svg>

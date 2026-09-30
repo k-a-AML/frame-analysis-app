@@ -1,0 +1,75 @@
+<svg width="400px" height="400px" viewBox="0 0 400 400" version="1.1" xmlns="http://www.w3.org/2000/svg" style="background:#ffffff; border:1px solid #cbd5e1; border-radius:4px; cursor:grab; overflow:hidden;">
+ <defs><marker id="m1" viewBox="0 0 10 10" refX="5" refY="5" fill="#94a3b8" markerUnits="strokeWidth" markerWidth="6" markerHeight="8" orient="auto-start-reverse"><polygon points="0,0 5,5 0,10 10,5"/></marker></defs> <g class="zoom-pan-group" transform="translate(0,0) scale(1)"><line x1="60" y1="270" x2="60" y2="130" stroke-width="1.2" stroke="#cbd5e1"/>
+<line x1="60" y1="130" x2="200" y2="130" stroke-width="1.2" stroke="#cbd5e1"/>
+<line x1="200" y1="130" x2="200" y2="270" stroke-width="1.2" stroke="#cbd5e1"/>
+<line x1="200" y1="130" x2="340" y2="130" stroke-width="1.2" stroke="#cbd5e1"/>
+<line x1="340" y1="130" x2="340" y2="270" stroke-width="1.2" stroke="#cbd5e1"/>
+<line x1="60" y1="270" x2="45.27348015917361" y2="130.000001116149" stroke-width="1.2" stroke="#86efac"/>
+<line x1="45.27348015917361" y1="130.000001116149" x2="185.27347992961106" y2="130.00000141267623" stroke-width="1.2" stroke="#86efac"/>
+<line x1="185.27347992961106" y1="130.00000141267623" x2="200" y2="270" stroke-width="1.2" stroke="#86efac"/>
+<line x1="185.27347992961106" y1="130.00000141267623" x2="325.27347984702845" y2="130.0000008311748" stroke-width="1.2" stroke="#86efac"/>
+<line x1="325.27347984702845" y1="130.0000008311748" x2="340" y2="270" stroke-width="1.2" stroke="#86efac"/>
+<path d="M 60 270 C 60 222.81697563788003 28.829060895408784 178.9128045389075 45.27348015917361 130.000001116149" stroke-width="1.5" stroke="#2563eb" fill="none"/>
+<g class="text-label" data-text-role="composite">
+  <text class="text-stroke" x="65.26412812883804" y="256.5511488136038" font-family="'Segoe UI', Meiryo, sans-serif" font-size="9" font-weight="bold" xml:space="preserve" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="none">δmax=0.92</text>
+  <text class="text-fill" x="65.26412812883804" y="256.5511488136038" font-family="'Segoe UI', Meiryo, sans-serif" font-size="9" font-weight="bold" xml:space="preserve" fill="#dc2626">δmax=0.92</text>
+</g>
+<line x1="66.60571408633733" y1="269.30514871192264" x2="65.26412812883804" y2="256.5511488136038" stroke="#94a3b8" stroke-width="0.8" marker-start="url(#m1)" marker-end="url(#m1)"/>
+<g class="text-label" data-text-role="composite">
+  <text class="text-stroke" x="66.92943419170813" y="262.8235365000345" font-family="'Segoe UI', Meiryo, sans-serif" font-size="8" font-weight="bold" transform="rotate(83.99517217596208 66.92943419170813, 262.8235365000345)" xml:space="preserve" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="none">0.36</text>
+  <text class="text-fill" x="66.92943419170813" y="262.8235365000345" font-family="'Segoe UI', Meiryo, sans-serif" font-size="8" font-weight="bold" transform="rotate(83.99517217596208 66.92943419170813, 262.8235365000345)" xml:space="preserve" fill="#64748b">0.36</text>
+</g>
+<g class="text-label" data-text-role="composite">
+  <text class="text-stroke" x="35.55613473603585" y="172.94899857372084" font-family="'Segoe UI', Meiryo, sans-serif" font-size="9" font-weight="bold" xml:space="preserve" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="none">δmax=11.65</text>
+  <text class="text-fill" x="35.55613473603585" y="172.94899857372084" font-family="'Segoe UI', Meiryo, sans-serif" font-size="9" font-weight="bold" xml:space="preserve" fill="#dc2626">δmax=11.65</text>
+</g>
+<line x1="45.92065940000946" y1="271.4809977881752" x2="35.55613473603585" y2="172.94899857372084" stroke="#94a3b8" stroke-width="0.8" marker-start="url(#m1)" marker-end="url(#m1)"/>
+<g class="text-label" data-text-role="composite">
+  <text class="text-stroke" x="35.7658316474204" y="222.73805949459174" font-family="'Segoe UI', Meiryo, sans-serif" font-size="8" font-weight="bold" transform="rotate(83.99517217596208 35.7658316474204, 222.73805949459174)" xml:space="preserve" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="none">2.82</text>
+  <text class="text-fill" x="35.7658316474204" y="222.73805949459174" font-family="'Segoe UI', Meiryo, sans-serif" font-size="8" font-weight="bold" transform="rotate(83.99517217596208 35.7658316474204, 222.73805949459174)" xml:space="preserve" fill="#64748b">2.82</text>
+</g>
+<path d="M 45.27348015917361 130.000001116149 C 91.94014671608873 145.68927216183926 138.60681330714084 145.26138305065396 185.27347992961106 130.00000141267623" stroke-width="1.5" stroke="#2563eb" fill="none"/>
+<path d="M 45.27348015917361 130.000001116149 C 68.60681343763117 137.84463663899413 91.94020802656098 153.32664864876696 115.27348001980917 153.27316268745477" stroke-width="1.5" stroke="#ef4444" fill="none"/>
+<path d="M 115.27348001980917 153.27316268745477 C 138.60675201305736 153.21967672614258 161.94014661837593 137.63069223166508 185.27347992961106 130.00000141267623" stroke-width="1.5" stroke="#ef4444" fill="none"/>
+<g class="text-label" data-text-role="composite">
+  <text class="text-stroke" x="115.1194799826424" y="159.27334660479906" font-family="'Segoe UI', Meiryo, sans-serif" font-size="9" font-weight="bold" xml:space="preserve" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="none">δmax=33.25</text>
+  <text class="text-fill" x="115.1194799826424" y="159.27334660479906" font-family="'Segoe UI', Meiryo, sans-serif" font-size="9" font-weight="bold" xml:space="preserve" fill="#dc2626">δmax=33.25</text>
+</g>
+<line x1="45.27348009717115" y1="159.27334645686162" x2="115.1194799826424" y2="159.27334660479906" stroke="#94a3b8" stroke-width="0.8" marker-start="url(#m1)" marker-end="url(#m1)"/>
+<g class="text-label" data-text-role="composite">
+  <text class="text-stroke" x="80.19648003143458" y="163.27334653083034" font-family="'Segoe UI', Meiryo, sans-serif" font-size="8" font-weight="bold" transform="rotate(1.2135541553335154e-7 80.19648003143458, 163.27334653083034)" xml:space="preserve" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="none">2</text>
+  <text class="text-fill" x="80.19648003143458" y="163.27334653083034" font-family="'Segoe UI', Meiryo, sans-serif" font-size="8" font-weight="bold" transform="rotate(1.2135541553335154e-7 80.19648003143458, 163.27334653083034)" xml:space="preserve" fill="#64748b">2</text>
+</g>
+<path d="M 185.27347992961106 130.00000141267623 C 200.19057681181965 175.6139047728284 200 222.81697571953038 200 270" stroke-width="1.5" stroke="#2563eb" fill="none"/>
+<g class="text-label" data-text-role="composite">
+  <text class="text-stroke" x="203.25877416253786" y="187.275651009202" font-family="'Segoe UI', Meiryo, sans-serif" font-size="9" font-weight="bold" xml:space="preserve" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="none">δmax=8.42</text>
+  <text class="text-fill" x="203.25877416253786" y="187.275651009202" font-family="'Segoe UI', Meiryo, sans-serif" font-size="9" font-weight="bold" xml:space="preserve" fill="#dc2626">δmax=8.42</text>
+</g>
+<line x1="197.10308877311527" y1="128.75565159970066" x2="203.25877416253786" y2="187.275651009202" stroke="#94a3b8" stroke-width="0.8" marker-start="url(#m1)" marker-end="url(#m1)"/>
+<g class="text-label" data-text-role="composite">
+  <text class="text-stroke" x="202.16995763568204" y="157.80642677532975" font-family="'Segoe UI', Meiryo, sans-serif" font-size="8" font-weight="bold" transform="rotate(83.99517207041488 202.16995763568204, 157.80642677532975)" xml:space="preserve" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="none">1.67</text>
+  <text class="text-fill" x="202.16995763568204" y="157.80642677532975" font-family="'Segoe UI', Meiryo, sans-serif" font-size="8" font-weight="bold" transform="rotate(83.99517207041488 202.16995763568204, 157.80642677532975)" xml:space="preserve" fill="#64748b">1.67</text>
+</g>
+<path d="M 185.27347992961106 130.00000141267623 C 231.9401466503566 149.64724725954434 278.60681326772414 144.4056041450198 325.27347984702845 130.0000008311748" stroke-width="1.5" stroke="#2563eb" fill="none"/>
+<path d="M 185.27347992961106 130.00000141267623 C 208.60681328998385 139.82362433611027 231.94934034659315 149.2581001906612 255.27347994136022 148.60315289052627" stroke-width="1.5" stroke="#ef4444" fill="none"/>
+<path d="M 255.27347994136022 148.60315289052627 C 278.5976195361273 147.94820559039135 301.9401465573763 137.2028024880973 325.27347984702845 130.0000008311748" stroke-width="1.5" stroke="#ef4444" fill="none"/>
+<g class="text-label" data-text-role="composite">
+  <text class="text-stroke" x="254.1254799912153" y="154.60968527273567" font-family="'Segoe UI', Meiryo, sans-serif" font-size="9" font-weight="bold" xml:space="preserve" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="none">δmax=26.59</text>
+  <text class="text-fill" x="254.1254799912153" y="154.60968527273567" font-family="'Segoe UI', Meiryo, sans-serif" font-size="9" font-weight="bold" xml:space="preserve" fill="#dc2626">δmax=26.59</text>
+</g>
+<line x1="185.2734800318294" y1="154.60968555871807" x2="254.1254799912153" y2="154.60968527273567" stroke="#94a3b8" stroke-width="0.8" marker-start="url(#m1)" marker-end="url(#m1)"/>
+<g class="text-label" data-text-role="composite">
+  <text class="text-stroke" x="219.69948002813666" y="158.60968541572686" font-family="'Segoe UI', Meiryo, sans-serif" font-size="8" font-weight="bold" transform="rotate(-2.3798270182279044e-7 219.69948002813666, 158.60968541572686)" xml:space="preserve" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="none">1.97</text>
+  <text class="text-fill" x="219.69948002813666" y="158.60968541572686" font-family="'Segoe UI', Meiryo, sans-serif" font-size="8" font-weight="bold" transform="rotate(-2.3798270182279044e-7 219.69948002813666, 158.60968541572686)" xml:space="preserve" fill="#64748b">1.97</text>
+</g>
+<path d="M 325.27347984702845 130.0000008311748 C 339.3804111185152 175.69912524555673 340 222.8169755220501 340 270" stroke-width="1.5" stroke="#2563eb" fill="none"/>
+<g class="text-label" data-text-role="composite">
+  <text class="text-stroke" x="343.01210858536734" y="188.39152514087795" font-family="'Segoe UI', Meiryo, sans-serif" font-size="9" font-weight="bold" xml:space="preserve" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="none">δmax=7.9</text>
+  <text class="text-fill" x="343.01210858536734" y="188.39152514087795" font-family="'Segoe UI', Meiryo, sans-serif" font-size="9" font-weight="bold" xml:space="preserve" fill="#dc2626">δmax=7.9</text>
+</g>
+<line x1="336.7430289562474" y1="128.79352549470906" x2="343.01210858536734" y2="188.39152514087795" stroke="#94a3b8" stroke-width="0.8" marker-start="url(#m1)" marker-end="url(#m1)"/>
+<g class="text-label" data-text-role="composite">
+  <text class="text-stroke" x="341.86659493863124" y="158.38330078837103" font-family="'Segoe UI', Meiryo, sans-serif" font-size="8" font-weight="bold" transform="rotate(83.99517206174669 341.86659493863124, 158.38330078837103)" xml:space="preserve" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="none">1.7</text>
+  <text class="text-fill" x="341.86659493863124" y="158.38330078837103" font-family="'Segoe UI', Meiryo, sans-serif" font-size="8" font-weight="bold" transform="rotate(83.99517206174669 341.86659493863124, 158.38330078837103)" xml:space="preserve" fill="#64748b">1.7</text>
+</g>
+</g></svg>
