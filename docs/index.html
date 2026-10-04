@@ -55,6 +55,7 @@
       letter-spacing: -0.05em;
     }
   </style>
+
 </head>
 <body class="font-sans antialiased selection:bg-slate-200 selection:text-academic-primary">
 
@@ -128,15 +129,15 @@
           <span class="text-xs text-slate-500 font-mono">Windows 10 / 11 (64bit) / 無料提供（要個別認証）</span>
         </div>
         <p class="text-xs sm:text-sm text-slate-700 leading-relaxed text-justify font-serif">
-          本ソフトウェアは、大学・高等専門学校の建築学における「構造力学」「構造解析学」の講義・演習を担当される教員を支援するために開発された教育専用デスクトップツールです。学生が手計算（たわみ角法や固定法）で学ぶ剛比・剛度ベースの理論値と整合するUIや解析エンジンを備え、2次元の直感的なモデリングから、3次元空間で線材の垂直応力度コンター（引張・圧縮の明瞭な分離）、さらには演習・講義資料作成用のベクトル図面（SVG/PNG）を即座に生成します。インターネット接続を一切必要としない完全ローカル環境で動作し、講義室での即応的な実演や演習作成にも安心してご活用いただけます。
+          本ソフトウェアは、大学・高等専門学校の建築学における「構造力学」「構造解析学」の講義・演習を担当される教員を支援するために開発された教育専用デスクトップツールです。学生が手計算（たわみ角法や固定法）で学ぶ<span class="bg-gradient-to-t from-yellow-200 from-40% to-transparent to-40% font-bold text-slate-900">剛比・剛度ベースの理論値と整合するUI</span>を備え、2次元の直感的なモデリングから、<span class="bg-gradient-to-t from-yellow-200 from-40% to-transparent to-40% font-bold text-slate-900">3次元空間で線材の垂直応力コンター（引張・圧縮の明瞭な分離）</span>、さらには<span class="bg-gradient-to-t from-yellow-200 from-40% to-transparent to-40% font-bold text-slate-900">演習・講義資料作成用のベクトル図面（SVG/PNG）を即座に生成</span>します。インターネット接続を一切必要としない<span class="bg-gradient-to-t from-yellow-200 from-40% to-transparent to-40% font-bold text-slate-900">完全ローカル環境で動作</span>し、講義室での即応的な実演や演習作成にも安心してご活用いただけます。また標準的なアプリでは実装されない<span class="bg-gradient-to-t from-yellow-200 from-40% to-transparent to-40% font-bold text-slate-900">分布荷重部材の変形を忠実に計算・描画</span>し、教育用途として答えます。
         </p>
         
         <div class="mt-4 pt-3 border-t border-slate-200 flex flex-wrap gap-2 text-[11px] font-mono text-slate-600">
-          <span class="bg-slate-100 px-2 py-0.5 rounded border border-slate-200">直接剛性法（変位法）</span>
-          <span class="bg-slate-100 px-2 py-0.5 rounded border border-slate-200">剛度 K 入力対応</span>
-          <span class="bg-slate-100 px-2 py-0.5 rounded border border-slate-200">3Dの応力度可視化</span>
+          <span class="bg-slate-100 px-2 py-0.5 rounded border border-slate-200">剛度 K 入力対応</span>          
+          <span class="bg-slate-100 px-2 py-0.5 rounded border border-slate-200">3Dの応力可視化</span>
           <span class="bg-slate-100 px-2 py-0.5 rounded border border-slate-200">演習問題ベクター作図</span>
           <span class="bg-slate-100 px-2 py-0.5 rounded border border-slate-200">完全ローカル実行</span>
+        <span class="bg-slate-100 px-2 py-0.5 rounded border border-slate-200">分布荷重作用部材の変形を厳密に評価</span>
         </div>
       </div>
 
@@ -318,7 +319,7 @@
                 <td class="py-3 px-4">一致するが図面化や可視化が困難</td>
               </tr>
               <tr>
-                <td class="py-3 px-4 font-bold text-slate-800 bg-slate-50/50">3次元応力度可視化</td>
+                <td class="py-3 px-4 font-bold text-slate-800 bg-slate-50/50">3次元での応力可視化</td>
                 <td class="py-3 px-4 bg-blue-50/30 text-academic-primary font-bold border-l border-r border-blue-200">
                   標準搭載（引張赤・圧縮青・BMD重畳）
                 </td>
@@ -332,6 +333,14 @@
                 </td>
                 <td class="py-3 px-4">CAD等での再トレース・清書作業が必要</td>
                 <td class="py-3 px-4">Excelグラフ等の切り貼りに留まる</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 font-bold text-slate-800 bg-slate-50/50">部材変形の正確性</td>
+                <td class="py-3 px-4 bg-blue-50/30 text-academic-primary font-bold border-l border-r border-blue-200">
+                  理論に基づき分布荷重区間も厳密に計算し、変形図は2分割3次ベジェ曲線で表示
+                </td>
+                <td class="py-3 px-4">分布荷重の変形には非対応、もしくは部材を無数分割して求めるなどが多い</td>
+                <td class="py-3 px-4">計算・描画とも理論的に可能だが大変</td>
               </tr>
               <tr>
                 <td class="py-3 px-4 font-bold text-slate-800 bg-slate-50/50">動作環境・機密性</td>
@@ -440,7 +449,7 @@
       <div class="flex items-baseline space-x-3 mb-6">
         <span class="section-num text-xl">02</span>
         <div>
-          <h2 class="text-lg sm:text-xl font-bold font-serif text-slate-900">3次元空間での応力度コンターと曲げひび割れ挙動</h2>
+          <h2 class="text-lg sm:text-xl font-bold font-serif text-slate-900">3次元空間での応力コンターと曲げひび割れ挙動</h2>
           <p class="text-xs text-slate-500 font-serif">荷重増加に伴う変形・応力分布の推移と、出題用モデル図の対比</p>
         </div>
       </div>
@@ -519,7 +528,7 @@
       <div class="flex items-baseline space-x-3 mb-4">
         <span class="section-num text-xl">03</span>
         <div>
-          <h2 class="text-lg sm:text-xl font-bold font-serif text-slate-900">直感入力から出題・模範解答（変形・応力図）への完全自動展開</h2>
+          <h2 class="text-lg sm:text-xl font-bold font-serif text-slate-900">直感入力から出題・模範解答（変形・断面力図）への完全自動展開</h2>
           <p class="text-xs text-slate-500 font-serif">
             わずかなマウス操作入力から「問題図 → 詳細変形図 → 曲げモーメント図」が一瞬で生成される実例
           </p>
@@ -670,7 +679,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="py-2.5 font-bold text-slate-800">変形・応力図の作成</td>
+                  <td class="py-2.5 font-bold text-slate-800">変形・断面力図の作成</td>
                   <td class="py-2.5 text-slate-600">
                     ・たわみ：5次理論曲線を2分割3次ベジェ曲線でSVGとして高精度表示<br/>
                     ・N,Q,M：理論通りの曲線をSVG表示
