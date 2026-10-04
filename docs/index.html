@@ -334,14 +334,6 @@
                 <td class="py-3 px-4">Excelグラフ等の切り貼りに留まる</td>
               </tr>
               <tr>
-                <td class="py-3 px-4 font-bold text-slate-800 bg-slate-50/50">部材変形の正確性</td>
-                <td class="py-3 px-4 bg-blue-50/30 text-academic-primary font-bold border-l border-r border-blue-200">
-                  理論に基づき分布荷重区間も厳密に計算し、変形図は2分割3次ベジェ曲線で表示
-                </td>
-                <td class="py-3 px-4">分布荷重の変形には非対応、もしくは部材を無数分割して求めるなどが多い</td>
-                <td class="py-3 px-4">計算・描画とも理論的に可能だが大変</td>
-              </tr>
-              <tr>
                 <td class="py-3 px-4 font-bold text-slate-800 bg-slate-50/50">動作環境・機密性</td>
                 <td class="py-3 px-4 bg-blue-50/30 text-academic-primary font-bold border-l border-r border-blue-200">
                   完全オフライン・通信0（授業中も安全）
@@ -584,11 +576,11 @@
               <span class="text-[10px] font-mono px-1.5 py-0.5 bg-blue-50 border border-blue-200 text-academic-primary rounded">def2</span>
             </div>
             <div class="bg-white min-h-[190px] flex items-center justify-center p-1">
-              <img src="def2.svg" alt="部材変形図（たわみ角法骨組変形＋分布荷重たわみ補正）" class="max-h-44 w-auto object-contain mx-auto">
+              <img src="def2.svg" alt="部材変形図（たわみ角法骨組変形＋たわみ補正）" class="max-h-44 w-auto object-contain mx-auto">
             </div>
           </div>
           <div class="mt-2.5 pt-2 border-t border-slate-200 text-[11px] text-slate-600 font-serif leading-snug">
-            骨組変形（青線）に加え、分布荷重による梁たわみ補正（赤線）と最大たわみ量 を正確に算定・表示。
+            拡大に耐えられるようSVG形式で3次ベジェ曲線表示。両端回転角と部材角により決まる基本骨組変形（青線）に分布荷重分のたわみを補正（赤線）。
           </div>
         </div>
 
@@ -680,7 +672,6 @@
                 <tr>
                   <td class="py-2.5 font-bold text-slate-800">変形・断面力図の作成</td>
                   <td class="py-2.5 text-slate-600">
-                    ・多用途を見越して拡大縮小に耐えられるようSVG形式出力(3次ベジェ曲線)
                     ・たわみ：曲げモーメント2階積分ではなく両端回転角と部材角による3次ベジェ曲線でSVG描画。分布荷重作用時は補正分を考慮して2分割3次ベジェ曲線として高精度表示<br/>
                     ・N,Q,M：理論通りの曲線をSVG表示
                   </td>
