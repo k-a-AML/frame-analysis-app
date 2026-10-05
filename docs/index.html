@@ -129,8 +129,12 @@
           <span class="text-xs text-slate-500 font-mono">Windows 10 / 11 (64bit) / 無料提供（要個別認証）</span>
         </div>
         <p class="text-xs sm:text-sm text-slate-700 leading-relaxed text-justify font-serif">
-          本ソフトウェアは、大学・高等専門学校の建築学における「構造力学」「構造解析学」の講義・演習を担当される教員を支援するために開発された教育専用デスクトップツールです。学生が手計算（たわみ角法や固定法）で学ぶ<span class="bg-gradient-to-t from-yellow-200 from-40% to-transparent to-40% font-bold text-slate-900">剛比・剛度ベースの理論値と整合するUI</span>を備え、2次元の直感的なモデリングから、<span class="bg-gradient-to-t from-yellow-200 from-40% to-transparent to-40% font-bold text-slate-900">3次元空間で線材の垂直応力コンター（引張・圧縮の明瞭な分離）</span>、さらには<span class="bg-gradient-to-t from-yellow-200 from-40% to-transparent to-40% font-bold text-slate-900">演習・講義資料作成用のベクトル図面（SVG/PNG）を即座に生成</span>します。インターネット接続を一切必要としない<span class="bg-gradient-to-t from-yellow-200 from-40% to-transparent to-40% font-bold text-slate-900">完全ローカル環境で動作</span>し、講義室での即応的な実演や演習作成にも安心してご活用いただけます。
-        </p>
+          ・本ソフトウェアは、大学・高等専門学校の建築学における「構造力学」「構造解析学」の講義・演習を担当される教員を支援するために開発された教育専用デスクトップツールです。</br>
+          ・学生が手計算（たわみ角法や固定法）で学ぶ<span class="bg-gradient-to-t from-yellow-200 from-40% to-transparent to-40% font-bold text-slate-900">剛比・剛度ベースの理論値と整合するUI</span>を備えています。</br>
+          ・2次元の直感的なモデリングから、<span class="bg-gradient-to-t from-yellow-200 from-40% to-transparent to-40% font-bold text-slate-900">3次元空間で線材の垂直応力コンター（引張・圧縮の明瞭な分離）</span>が表示できます。</br>
+          ・<span class="bg-gradient-to-t from-yellow-200 from-40% to-transparent to-40% font-bold text-slate-900">演習・講義資料作成用のベクトル図面（SVG/PNG）を即座に生成</span>します。</br>
+          ・インターネット接続を一切必要としない<span class="bg-gradient-to-t from-yellow-200 from-40% to-transparent to-40% font-bold text-slate-900">完全ローカル環境で動作</span>し、講義室での即応的な実演や演習作成にも安心してご活用いただけます。</br>
+         </p>
         
         <div class="mt-4 pt-3 border-t border-slate-200 flex flex-wrap gap-2 text-[11px] font-mono text-slate-600">
           <span class="bg-slate-100 px-2 py-0.5 rounded border border-slate-200">剛度 K 入力対応</span>          
@@ -672,8 +676,8 @@
                 <tr>
                   <td class="py-2.5 font-bold text-slate-800">変形・断面力図の作成</td>
                   <td class="py-2.5 text-slate-600">
-                    ・たわみ：曲げモーメント2階積分ではなく両端回転角と部材角による3次ベジェ曲線でSVG描画。分布荷重作用時は補正分を考慮して2分割3次ベジェ曲線として高精度表示<br/>
-                    ・N,Q,M：理論通りの曲線をSVG表示
+                    ・たわみ：部材両端の回転角・部材角から求まる理論変形曲線をもとに、分布荷重が作用する部材は補正項を考慮した上で2分割3次ベジェ曲線で表示<br/>
+                    ・N,Q,M：理論通りの曲線で表示
                   </td>
                 </tr>
                 <tr>
